@@ -1,6 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from "mapbox-gl";
-import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
+
+
+interface MarkerAndColor{
+  color: string;
+  marker: Marker;
+}
 
 @Component({
   templateUrl: './markers-page.component.html',
@@ -9,6 +14,8 @@ import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
 export class MarkersPageComponent {
 
   @ViewChild('map') divMap?: ElementRef;
+
+  public markers: MarkerAndColor[] = [];
 
   public map?: Map;
   public currentLngLat: LngLat = new LngLat(-93.11520332908265, 16.752918789579596);
@@ -54,6 +61,16 @@ export class MarkersPageComponent {
     })
     .setLngLat(lngLat)
     .addTo( this.map );
+
+    this.markers.push( {
+      color,
+      marker
+    } );
+  }
+
+  deleteMarker(index: number){
+    this.markers[index].marker.remove();
+    this.markers.splice(index,1);
   }
 
 }
