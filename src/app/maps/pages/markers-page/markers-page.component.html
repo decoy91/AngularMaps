@@ -6,11 +6,13 @@
   (click)="flyTo(colorMarker.marker)"
   (dblclick)="deleteMarker(i)"
   class="list-group-item">
+  <button (click)="deleteMarker(i)" class="btn btn-danger"> X </button>
     Marcador {{ i + 1 }}
   </li>
 
+
 </ul>
 
-<button (click)="createMarker()" class="btn btn-primary">
+<button id="btn_marker" (click)="createMarker()" class="btn btn-primary">
   + Agregar Marcador
 </button>

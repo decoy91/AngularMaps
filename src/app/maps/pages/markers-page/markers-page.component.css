@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-button{
+#btn_marker{
   position: fixed;
   bottom: 30px;
   right: 20px;
